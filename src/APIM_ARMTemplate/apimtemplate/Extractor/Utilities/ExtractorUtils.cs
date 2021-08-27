@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Extract
                 // create a master template that links to all other templates
                 Template masterTemplate = masterTemplateExtractor.GenerateLinkedMasterTemplate(
                     apiTemplate, globalServicePolicyTemplate, apiVersionSetTemplate, productTemplate, productAPITemplate,
-                    apiTagTemplate, loggerTemplate, backendResult.Item1, authorizationServerTemplate, namedValueTemplate,
+                    apiTagTemplate, null, backendResult.Item1, authorizationServerTemplate, namedValueTemplate,
                     tagTemplate, fileNames, apiFileName, exc);
 
                 fileWriter.WriteJSONToFile(masterTemplate, String.Concat(@dirName, fileNames.linkedMaster));

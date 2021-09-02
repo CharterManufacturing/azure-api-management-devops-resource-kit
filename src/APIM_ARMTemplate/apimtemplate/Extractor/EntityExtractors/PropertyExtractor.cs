@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Extract
             foreach (var extractedProperty in properties)
             {
                 JToken oProperty = JObject.Parse(extractedProperty);
+
+                // Do not export the logger credentials
+                if(!string.IsNullOrEmpty(extractedProperty) && extractedProperty.Contains("Logger-Credentials"))
+                {
+                    continue;
+                }
+
                 string propertyName = ((JValue)oProperty["name"]).Value.ToString();
                 string fullPropertyResource = await GetPropertyDetailsAsync(exc.sourceApimName, exc.resourceGroup, propertyName);
 
